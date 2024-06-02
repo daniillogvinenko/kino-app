@@ -15,3 +15,13 @@
     background-color: white;
     z-index: 10;
 }
+
+.commentsSection {
+    padding: 10px;
+
+    .newCommentForm {
+        border: 1px solid #000;
+        padding: 10px;
+        display: flex;
+    }
+}

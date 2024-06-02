@@ -1,7 +1,7 @@
 import { Layout } from "@/components/Layout";
 import cls from "./MoviePage.module.scss";
 import { NavLink, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Button } from "@/components/ui/Button";
@@ -17,6 +17,7 @@ export const MoviePage = () => {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [newReviewValue, setNewReviewValue] = useState("");
     const authData = useContext(UserContext);
 
     useEffect(() => {
@@ -49,6 +50,10 @@ export const MoviePage = () => {
         setModalIsOpen(true);
     };
 
+    const handleNewReviewChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setNewReviewValue(e.target.value);
+    };
+
     const handleAddToFavorites = () => {
         const fetchData = async () => {
             const data = await MockApi.addMovieToFavorites(authData?.user?.id, id!);
@@ -58,6 +63,17 @@ export const MoviePage = () => {
         fetchData().then((data) => {
             authData?.updateUser(data);
         });
+    };
+
+    const handleSendReview = () => {
+        const fetchData = async () => {
+            const data = await MockApi.postReview(authData?.user?.id, id, newReviewValue);
+            return data;
+        };
+
+        // todo
+        // надо чтобы с сервера приходили только комментарии к конкретному фильму
+        fetchData().then((data) => setReviews(data));
     };
 
     return (
@@ -99,8 +115,19 @@ export const MoviePage = () => {
                         </>
                     )}
 
-                    <div>
+                    <div className={cls.commentsSection}>
                         <div>Комментарии</div>
+                        {authData?.user ? (
+                            <div className={cls.newCommentForm}>
+                                <input
+                                    type="text"
+                                    placeholder="Введите комментарий"
+                                    value={newReviewValue}
+                                    onChange={handleNewReviewChange}
+                                />
+                                <Button onClick={handleSendReview}>Отправить</Button>
+                            </div>
+                        ) : null}
                         {reviews.length ? (
                             <div>
                                 {reviews?.map((review) => (

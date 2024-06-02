@@ -69,6 +69,17 @@ class API {
         });
     }
 
+    postReview(userId: string, movieId: string, text: string) {
+        return new Promise<Review[]>((res) => {
+            setTimeout(() => {
+                const newId = (Math.max(...this.db.reviews.map((review) => +review.id)) + 1).toString();
+                this.db.reviews.push({ id: newId, movieId, text, userId });
+
+                res(this.db.reviews.filter((review) => review.movieId === movieId));
+            }, DELAY);
+        });
+    }
+
     // USERS------------------------------------
     getUserById(id: string) {
         return new Promise<User | undefined>((res) => {
