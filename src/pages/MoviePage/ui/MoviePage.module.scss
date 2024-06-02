@@ -1,0 +1,17 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewCard {
+    margin-bottom: 20px;
+}
+
+.modalContent {
+    position: relative;
+    height: 90vh;
+    aspect-ratio: 16 / 9;
+    border-radius: 30px;
+    background-color: white;
+    z-index: 10;
+}

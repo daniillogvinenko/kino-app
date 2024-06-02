@@ -1,0 +1,9 @@
+.Header {
+    padding: 40px 0;
+    border-bottom: 1px solid black;
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+}

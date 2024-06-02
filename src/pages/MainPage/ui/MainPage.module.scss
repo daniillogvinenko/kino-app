@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    justify-content: space-e;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 320px;
+    // border: 1px solid #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.356);
+    border-radius: 8px;
+    overflow: hidden;
+
+    .imgWrapper {
+        height: 200px;
+        overflow: hidden;
+
+        .img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .title {
+        margin-bottom: 15px;
+    }
+
+    .description {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

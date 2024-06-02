@@ -1,0 +1,51 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s transform;
+    transform: scale(0.6);
+    // max-width: 60%;
+    z-index: 100000;
+}
+
+.modalNew {
+    .content {
+        background-color: var(--light-bg-redesigned);
+    }
+}
+
+.modalOld {
+    .content {
+        background-color: var(--bg-color);
+    }
+}
+
+.opened {
+    opacity: 1;
+    pointer-events: all;
+    z-index: var(--modal-z-index);
+
+    .content {
+        transform: scale(1);
+    }
+}
+
+.isClosing {
+    .content {
+        transition: 0.3s transform;
+        transform: scale(0.4);
+    }
+}
