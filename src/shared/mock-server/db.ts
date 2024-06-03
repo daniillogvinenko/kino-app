@@ -4,12 +4,31 @@ interface database {
     users: User[];
 }
 
+type Genre =
+    | "драма"
+    | "криминал"
+    | "фантастика"
+    | "комедия"
+    | "приключения"
+    | "ужасы"
+    | "боевик"
+    | "вестерн"
+    | "приключения"
+    | "военный"
+    | "детектив"
+    | "приключения";
+
 interface Movie {
     id: string;
     title: string;
     description: string;
     mainImg: string;
     otherImages: string[];
+    genres: Genre[];
+    year: string;
+    country: string;
+    duration: string;
+    ageLimit: string;
 }
 
 interface Review {
@@ -41,6 +60,11 @@ export const db: database = {
                 "https://s.studiobinder.com/wp-content/uploads/2021/01/Character-Driven-Editing-in-The-Godfather-Shot-8-StudioBinder-Shotlisting-Software.jpg.webp?resolution=2560,1",
                 "https://i0.wp.com/cilovers.com/wp-content/uploads/2023/02/4ZBHVZG2.jpg?resize=800%2C447&ssl=1",
             ],
+            ageLimit: "18+",
+            country: "США",
+            genres: ["драма", "криминал"],
+            duration: "2 ч 49 мин",
+            year: "1972",
         },
         {
             id: "2",
@@ -54,6 +78,11 @@ export const db: database = {
                 "https://cdn.theasc.com/BTTF-2-Doc-Brown.jpeg",
                 "https://www.hollywoodreporter.com/wp-content/uploads/2023/08/MSDBATO_EC083-H-2023.jpg",
             ],
+            ageLimit: "12+",
+            country: "США",
+            genres: ["фантастика", "приключения", "комедия"],
+            duration: "1 ч 56 мин",
+            year: "1985",
         },
         {
             id: "3",
@@ -68,6 +97,11 @@ export const db: database = {
                 "https://m.media-amazon.com/images/M/MV5BMjE1ODYxOTkxOF5BMl5BanBnXkFtZTgwNTE4OTEwMjE@._V1_FMjpg_UX1600_.jpg",
                 "https://m.media-amazon.com/images/M/MV5BMjI2OTk4OTg0NV5BMl5BanBnXkFtZTgwNTAwMzg5MTE@._V1_FMjpg_UX2160_.jpg",
             ],
+            ageLimit: "18+",
+            country: "США",
+            genres: ["драма", "криминал"],
+            duration: "2 ч 34 мин",
+            year: "1994",
         },
     ],
     reviews: [

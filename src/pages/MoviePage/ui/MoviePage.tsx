@@ -94,12 +94,24 @@ export const MoviePage = () => {
                                     <p>{movie?.title}</p>
                                     <br />
                                     <p>{movie?.description}</p>
+                                    <br />
+                                    <p>{movie?.year}</p>
+                                    <br />
+                                    <p>{movie?.genres.join(", ")}</p>
+                                    <br />
+                                    <p>{movie?.country}</p>
+                                    <br />
+                                    <p>{movie?.duration}</p>
+                                    <br />
+                                    <p>{movie?.ageLimit}</p>
                                     <Button onClick={handleOpenModal} size="lg">
                                         Смотреть
                                     </Button>
-                                    <Button onClick={handleAddToFavorites} variant="outline" size="lg">
-                                        Добавить в избранное
-                                    </Button>
+                                    {authData?.user ? (
+                                        <Button onClick={handleAddToFavorites} variant="outline" size="lg">
+                                            Добавить в избранное
+                                        </Button>
+                                    ) : null}
                                 </div>
                             </div>
                             <Carousel>
